@@ -78,10 +78,7 @@ def process_frame(frame):
         (60, 30, 255)
     )
 
-    # =====================================
-    # FILTRO MORFOLOGICO
-    # =====================================
-
+    # FILTRO
     kernel = np.ones((3,3), np.uint8)
 
     # Eliminar ruido pequeño
@@ -90,10 +87,7 @@ def process_frame(frame):
     # Recuperar tamaño objeto
     mask = cv2.dilate(mask, kernel, iterations=2)
 
-    # =====================================
     # BUSCAR CONTORNOS
-    # =====================================
-
     contours, _ = cv2.findContours(
         mask,
         cv2.RETR_EXTERNAL,
